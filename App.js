@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 
 const App = () => {
   const [age, setAge] = useState('');
@@ -24,11 +24,14 @@ const App = () => {
       <TextInput
         style={styles.input}
         placeholder="Enter your age"
+        placeholderTextColor="#d7c9db" 
         keyboardType="numeric"
         value={age}
         onChangeText={setAge}
       />
-      <Button title="Calculate" onPress={calculateHeartRateLimits} />
+      <TouchableOpacity style={styles.button} onPress={calculateHeartRateLimits}>
+        <Text style={styles.buttonText}>Calculate</Text>
+      </TouchableOpacity>
       {lowerLimit !== null && upperLimit !== null && (
         <View style={styles.resultContainer}>
           <Text style={styles.resultText}>
@@ -49,11 +52,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#eae2ed',
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
+    color: '#514354',
   },
   input: {
     height: 40,
@@ -62,6 +66,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: '100%',
     paddingHorizontal: 10,
+    borderRadius: 5,
+    color: '#86728b', 
+    backgroundColor: '#fefaff',
+  },
+  button: {
+    backgroundColor: '#baa7bf', 
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
   },
   resultContainer: {
     marginTop: 20,
@@ -70,6 +87,7 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 18,
     marginVertical: 5,
+    color: '#514354',
   },
 });
 
